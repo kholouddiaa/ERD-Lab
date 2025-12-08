@@ -60,17 +60,15 @@ You have been hired as a \*\*database designer\*\* to prepare an \*\*E-R diagram
 
 &nbsp; - `Locations`
 
-\- For each department, there is always \*\*one employee assigned to manage\*\* that department.
-
-\- Each manager has a \*\*HiringDate\*\* (date they started managing the department).
+\- Each department has \*\*one employee assigned as a manager\*\*, and each manager has a \*\*HiringDate\*\*.
 
 \- Each department:
 
-&nbsp; - \*\*May have employees\*\*.
+&nbsp; - \*\*May have employees\*\*
 
-&nbsp; - \*\*Has a set of projects\*\*.
+&nbsp; - \*\*Has a set of projects\*\*
 
-&nbsp; - Each project must be \*\*assigned to exactly one department\*\*.
+&nbsp; - Each project must be \*\*assigned to exactly one department\*\*
 
 
 
@@ -88,9 +86,9 @@ You have been hired as a \*\*database designer\*\* to prepare an \*\*E-R diagram
 
 \- Employees work on several projects, and each project has several employees  
 
-&nbsp; → this is a \*\*many-to-many relationship\*\* with an attribute:  
+&nbsp; → This is a \*\*many-to-many relationship\*\* with an attribute:
 
-&nbsp; - `Hours` (working hours of an employee on a project).
+&nbsp; - `Hours` (employee hours on a project)
 
 
 
@@ -106,11 +104,73 @@ You have been hired as a \*\*database designer\*\* to prepare an \*\*E-R diagram
 
 &nbsp; - `BirthDate`
 
-\- \*\*Note:\*\* If the employee leaves the company, there is \*\*no need to store\*\* his/her dependents’ information (i.e. dependent existence depends on employee).
+\- \*\*Note:\*\* If the employee leaves the company, \*\*dependent information is deleted\*\*.
 
 
 
 ---
+
+
+
+\## ERD Diagrams
+
+
+
+\### \*\*Problem 1 – ERD\*\*
+
+!\[Problem 1](./Problem1/erd\_problem1.png)
+
+
+
+---
+
+
+
+\### \*\*Problem 2 – ERD\*\*
+
+!\[Problem 2](./Problem2/erd\_problem2.png)
+
+
+
+---
+
+
+
+\### \*\*Problem 3 – ERD\*\*
+
+!\[Problem 3](./Problem3/erd\_problem3.png)
+
+
+
+---
+
+
+
+\### \*\*Problem 4 – ERD\*\*
+
+!\[Problem 4](./Problem4/erd\_problem4.png)
+
+
+
+---
+
+
+
+\## Notes
+
+\- Each ERD diagram illustrates entities, relationships, and attributes clearly.
+
+\- Folder organization ensures clean structure and easy navigation.
+
+\- You can expand the repository later with SQL scripts or relational schemas.
+
+
+
+---
+
+
+
+\### Created with  by Kholoud
 
 
 
