@@ -1,176 +1,122 @@
-\# ERD Lab – Company Projects \& Employees
+Contents
 
+Problem 1: Musicana (Musicians, Albums, Songs, Instruments)
 
+Problem 2: Real Estate Firm (Sales Offices, Employees, Properties, Owners)
 
-This repository contains ERD diagrams and exercises for modeling a company database.
+Problem 3: General Hospital (Wards, Patients, Consultants, Nurses, Drugs)
 
+Problem 4: Airlines Database (Airlines, Employees, Aircrafts, Routes, Crew, Transactions)
 
+Problem 1 – Musicana Records (Conceptual Schema)
 
----
+Musicana records store data about:
 
+Musicians (ID, Name, Address: Street/City, Phone)
 
+Instruments (Unique Name, Musical Key)
 
-\## Case 1 – Company Database
+Albums (Unique Title, Copyright Date, Album Identifier)
 
+Songs (Unique Title, Author)
 
+Key business rules:
 
-A big company has decided to store information about its projects and employees in a database.  
+A musician can play multiple instruments, and an instrument can be played by multiple musicians (M:N).
 
-You have been hired as a \*\*database designer\*\* to prepare an \*\*E-R diagram\*\* according to the following description:
+Each album contains multiple songs, and each song must appear on exactly one album.
 
+Each song is performed by one or more musicians, and a musician can perform many songs (M:N).
 
+Each album has exactly one producer (a musician), and a producer can produce many albums (1:N).
 
-\### 1. Employees
+Problem 2 – Real Estate Firm (E-R Diagram)
 
-\- The company has a number of employees.
+The firm manages:
 
-\- Each employee has the following attributes:
+Sales Offices (Office_Number, Location)
 
-&nbsp; - `SSN`
+Employees (Employee_ID, Employee_Name)
 
-&nbsp; - `BirthDate`
+Properties (Property_ID, Location = Address, City, State, Zip_Code)
 
-&nbsp; - `Gender`
+Owners (Owner_ID, Owner_Name)
 
-&nbsp; - `FName`
+Key business rules:
 
-&nbsp; - `LName`
+Each office can have zero or more employees.
 
-&nbsp; - `Address`
+Each employee must be assigned to exactly one office.
 
-&nbsp; - `Salary`
+Each office has exactly one manager (who is an employee), and a manager manages only one office.
 
-\- Each employee \*\*works on several projects\*\*.
+Each property must be listed with exactly one office; an office may list zero or more properties.
 
-\- Each employee \*\*must work in exactly one department\*\*.
+Each property can have zero or more owners.
 
-\- Each employee has \*\*a number of working hours\*\* in each project.
+Each owner must own one or more properties.
 
+Store PercentOwned for each (Owner, Property).
 
+Problem 3 – General Hospital (E-R Diagram)
 
-\### 2. Departments
+The hospital system includes:
 
-\- The company has a set of departments.
+Wards (Ward_ID, Name)
 
-\- Each department has:
+Patients (Patient_ID, Name, Date_Of_Birth)
 
-&nbsp; - `DName`
+Consultants (Consultant_ID, Name)
 
-&nbsp; - `DNUM` (unique identifier)
+Nurses (Number, Name, Address)
 
-&nbsp; - `Locations`
+Drugs (CodeNumber, RecommendedDosage, BrandNames…)
 
-\- Each department has \*\*one employee assigned as a manager\*\*, and each manager has a \*\*HiringDate\*\*.
+Key business rules:
 
-\- Each department:
+Each ward can host many patients, and each patient is hosted by only one ward (1:N).
 
-&nbsp; - \*\*May have employees\*\*
+Each patient has one leading consultant, but may also be examined by other consultants.
 
-&nbsp; - \*\*Has a set of projects\*\*
+Consultants may be assigned/examine zero or more patients.
 
-&nbsp; - Each project must be \*\*assigned to exactly one department\*\*
+The system records each time a nurse gives a patient a drug:
 
+Drug + Dosage + DateTime + Patient + Nurse
 
+Each ward is under supervision of one nurse, and a nurse supervises only one ward (1:1).
 
-\### 3. Projects
+Each nurse must serve in one ward, and a ward can have many nurses (1:N).
 
-\- Each project has the following attributes:
+A drug can have more than one brand name.
 
-&nbsp; - `PName`
+Problem 4 – Major Airlines Database (E-R Diagram)
 
-&nbsp; - `PNumber` (identifier)
+The database stores:
 
-&nbsp; - `Location`
+Airlines (ID, Name, Address, Contact Person, Telephone Numbers)
 
-&nbsp; - `City`
+Employees (Employee_ID, Name, Address, Birthday (Day/Month/Year), Gender, Position, Qualifications)
 
-\- Employees work on several projects, and each project has several employees  
+Aircrafts (Aircraft_ID, Capacity, Model)
 
-&nbsp; → This is a \*\*many-to-many relationship\*\* with an attribute:
+Routes (Route_ID, Origin, Destination, Distance, Classification: Domestic/International)
 
-&nbsp; - `Hours` (employee hours on a project)
+Transactions (Transaction_ID, Date, Description, Amount)
 
+Key business rules:
 
+Each airline owns multiple aircrafts (1:N).
 
-\### 4. Dependents
+Aircrafts are assigned to routes (M:N) and record:
 
-\- Each employee has a set of dependents.
+NumberOfPassengers, PricePerPassenger, DepartureDateTime, ArrivalDateTime, TravelTime
 
-\- Each dependent has:
+Each aircraft has its own crew:
 
-&nbsp; - `DependentName` (unique per employee)
+Major Pilot, Assistant Pilot, Two Hostesses
+(Crew are NOT stored as employees.)
 
-&nbsp; - `Gender`
+Each crew is assigned to only one aircraft.
 
-&nbsp; - `BirthDate`
-
-\- \*\*Note:\*\* If the employee leaves the company, \*\*dependent information is deleted\*\*.
-
-
-
----
-
-
-
-\## ERD Diagrams
-
-
-
-\### \*\*Problem 1 – ERD\*\*
-
-!\[Problem 1](./Problem1/erd\_problem1.png)
-
-
-
----
-
-
-
-\### \*\*Problem 2 – ERD\*\*
-
-!\[Problem 2](./Problem2/erd\_problem2.png)
-
-
-
----
-
-
-
-\### \*\*Problem 3 – ERD\*\*
-
-!\[Problem 3](./Problem3/erd\_problem3.png)
-
-
-
----
-
-
-
-\### \*\*Problem 4 – ERD\*\*
-
-!\[Problem 4](./Problem4/erd\_problem4.png)
-
-
-
----
-
-
-
-\## Notes
-
-\- Each ERD diagram illustrates entities, relationships, and attributes clearly.
-
-\- Folder organization ensures clean structure and easy navigation.
-
-\- You can expand the repository later with SQL scripts or relational schemas.
-
-
-
----
-
-
-
-\### Created with  by Kholoud
-
-
-
+The airline records buy/sell transactions (ticket sales, maintenance payments, etc.).
